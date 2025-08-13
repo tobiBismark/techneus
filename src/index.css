@@ -1,0 +1,216 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Luxury Technexus Design System */
+@layer base {
+  :root {
+    /* Core Luxury Palette */
+    --background: 0 0% 98%;
+    --foreground: 220 20% 10%;
+    
+    /* Luxury Colors */
+    --luxury-black: 220 20% 8%;
+    --luxury-gold: 45 100% 50%;
+    --luxury-gold-dark: 38 92% 45%;
+    --luxury-navy: 220 50% 15%;
+    --luxury-navy-light: 220 40% 25%;
+    --luxury-white: 0 0% 98%;
+    --luxury-gray: 220 10% 45%;
+    --luxury-gray-light: 220 10% 85%;
+    
+    /* Gradients */
+    --gradient-gold: linear-gradient(135deg, hsl(var(--luxury-gold)), hsl(var(--luxury-gold-dark)));
+    --gradient-luxury: linear-gradient(135deg, hsl(var(--luxury-navy)), hsl(var(--luxury-black)));
+    --gradient-premium: linear-gradient(180deg, hsl(var(--luxury-black)), hsl(var(--luxury-navy)));
+    
+    /* Shadows */
+    --shadow-luxury: 0 25px 50px -12px hsl(var(--luxury-black) / 0.25);
+    --shadow-gold: 0 10px 40px -15px hsl(var(--luxury-gold) / 0.4);
+    --shadow-elegant: 0 4px 20px -2px hsl(var(--luxury-navy) / 0.1);
+    
+    /* Component Colors */
+    --card: 0 0% 100%;
+    --card-foreground: hsl(var(--luxury-black));
+    
+    --primary: var(--luxury-navy);
+    --primary-foreground: var(--luxury-white);
+    
+    --secondary: var(--luxury-gray-light);
+    --secondary-foreground: var(--luxury-black);
+    
+    --accent: var(--luxury-gold);
+    --accent-foreground: var(--luxury-black);
+    
+    --muted: var(--luxury-gray-light);
+    --muted-foreground: var(--luxury-gray);
+    
+    --border: var(--luxury-gray-light);
+    --input: var(--luxury-gray-light);
+    --ring: var(--luxury-gold);
+    
+    --destructive: 0 84% 60%;
+    --destructive-foreground: var(--luxury-white);
+    
+    --popover: 0 0% 100%;
+    --popover-foreground: hsl(var(--luxury-black));
+    
+    --radius: 0.75rem;
+    
+    /* Animations */
+    --transition-luxury: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-smooth: all 0.3s ease-out;
+  }
+  
+  .dark {
+    --background: var(--luxury-black);
+    --foreground: var(--luxury-white);
+    
+    --card: var(--luxury-navy);
+    --card-foreground: var(--luxury-white);
+    
+    --primary: var(--luxury-gold);
+    --primary-foreground: var(--luxury-black);
+    
+    --secondary: var(--luxury-navy-light);
+    --secondary-foreground: var(--luxury-white);
+    
+    --muted: var(--luxury-navy-light);
+    --muted-foreground: var(--luxury-gray);
+    
+    --border: var(--luxury-navy-light);
+    --input: var(--luxury-navy-light);
+    
+    --popover: var(--luxury-navy);
+    --popover-foreground: var(--luxury-white);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-inter antialiased;
+    overflow-x: hidden;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-playfair;
+  }
+}
+
+@layer components {
+  /* Luxury Button Variants */
+  .btn-luxury {
+    @apply relative overflow-hidden bg-gradient-to-r from-luxury-navy to-luxury-black text-luxury-white px-8 py-4 rounded-xl font-semibold tracking-wide transition-all duration-300 hover:shadow-luxury hover:scale-105;
+  }
+  
+  .btn-gold {
+    @apply relative overflow-hidden bg-gradient-to-r from-luxury-gold to-luxury-gold-dark text-luxury-black px-8 py-4 rounded-xl font-semibold tracking-wide transition-all duration-300 hover:shadow-gold hover:scale-105;
+  }
+  
+  .btn-outline-gold {
+    @apply border-2 border-luxury-gold text-luxury-gold bg-transparent px-8 py-4 rounded-xl font-semibold tracking-wide transition-all duration-300 hover:bg-luxury-gold hover:text-luxury-black hover:shadow-gold;
+  }
+  
+  /* Premium Cards */
+  .card-luxury {
+    @apply bg-card backdrop-blur-sm border border-luxury-gray-light/20 rounded-2xl p-8 shadow-elegant hover:shadow-luxury transition-all duration-300;
+  }
+  
+  /* Gradient Text */
+  .text-gradient-gold {
+    @apply bg-gradient-to-r from-luxury-gold to-luxury-gold-dark bg-clip-text text-transparent;
+  }
+  
+  /* Premium Section Spacing */
+  .section-padding {
+    @apply py-20 px-4 sm:px-6 lg:px-8;
+  }
+  
+  /* Luxury Animations */
+  .fade-in-up {
+    animation: fadeInUp 0.8s ease-out forwards;
+  }
+  
+  .parallax-bg {
+    transform: translateZ(0);
+    will-change: transform;
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes glow {
+  0%, 100% { box-shadow: 0 0 20px hsl(var(--luxury-gold) / 0.3); }
+  50% { box-shadow: 0 0 40px hsl(var(--luxury-gold) / 0.6); }
+}
+
+@keyframes shimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+/* Premium Animation Classes */
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+.animate-glow {
+  animation: glow 2s ease-in-out infinite;
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.8s ease-out forwards;
+}
+
+.animation-delay-200 {
+  animation-delay: 0.2s;
+}
+
+.animation-delay-400 {
+  animation-delay: 0.4s;
+}
+
+.animation-delay-600 {
+  animation-delay: 0.6s;
+}
+
+/* Hover Shimmer Effect */
+.hover-shimmer {
+  position: relative;
+  overflow: hidden;
+}
+
+.hover-shimmer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  transition: left 0.5s;
+}
+
+.hover-shimmer:hover::before {
+  left: 100%;
+}
